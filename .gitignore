@@ -1,0 +1,24 @@
+# Secrets — never commit
+.env
+.env.*
+
+# OS / IDE
+.DS_Store
+.idea/
+
+# PRIVACY: anything disclosing Wallet details (payers, payees, amounts,
+# record IDs) or identifying info (real name, employer) must stay out of
+# git — this repo is public at github.com/upwithagents/walletup
+Finances - AI powered GSheet/Snapshot_*/
+agent_reviews/
+reports/
+CLAUDE.local.md
+
+# Claude workspace dirs that stay local
+claude_tasks/
+claude_procedures/
+.claude/memory/
+
+# Plans ARE tracked in this repo (overrides the user-global ignore)
+!claude_plans/
+!claude_plans/**

@@ -1,0 +1,32 @@
+# CLAUDE.local.md (example — copy to CLAUDE.local.md, which is gitignored)
+
+Private, identifying context that must never land in the public repo:
+real name, employer, specific account nicknames, family/team member names,
+anything that ties this project to a real person or organization.
+
+Copy this file to `CLAUDE.local.md` (same directory) and fill it in. It is
+loaded automatically via the `@CLAUDE.local.md` import in `CLAUDE.md` — no
+other wiring needed. If the file doesn't exist, that import is just a no-op.
+
+---
+
+## Who this is for
+
+- Owner's name: <fill in>
+- This is a personal project, unrelated to <employer name>. No
+  <employer>-issued accounts, infra, JIRA, or <employer>-bound MCPs/
+  connectors (e.g. a Google Drive/Gmail connector logged in under a work
+  identity) should touch this project's data. Flag any leakage immediately.
+
+## GitHub identity for this repo
+
+- Local git identity + SSH key setup used so commits/pushes here are
+  attributed to the project's own GitHub identity, never the owner's
+  personal one. (Document the actual key path / SSH host alias here.)
+
+## Real Wallet account names worth knowing
+
+- Public docs generalize account names where they'd otherwise reveal a
+  first name (e.g. "the second Raiffeisen credit card" instead of its real
+  in-app nickname). If you need the exact live name, check the Wallet MCP
+  directly — don't restore it into tracked docs.
