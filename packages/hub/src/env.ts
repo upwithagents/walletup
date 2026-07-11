@@ -18,7 +18,8 @@ export const env = {
   discordToken: () => required("DISCORD_TOKEN"),
   guildId: () => required("DISCORD_GUILD_ID"),
   generalChannelId: () => required("DISCORD_GENERAL_CHANNEL_ID"),
-  stakeholderId: () => required("STAKEHOLDER_DISCORD_ID"),
+  // Optional until stakeholder-specific routing exists.
+  stakeholderId: () => process.env.STAKEHOLDER_DISCORD_ID ?? "",
   hubPort: Number(process.env.HUB_PORT ?? 4400),
   adapterBasePort: Number(process.env.HUB_ADAPTER_BASE_PORT ?? 4500),
   advisorModel: process.env.ADVISOR_MODEL ?? "claude-sonnet-5",
