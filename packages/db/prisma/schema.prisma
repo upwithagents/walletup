@@ -50,3 +50,48 @@ model LearningNote {
   lesson     String
   createdAt  DateTime @default(now())
 }
+
+// Shared memory store — written from every surface (Discord, web app,
+// Claude Code sessions) so knowledge survives regardless of where the
+// user gave it.
+model Memory {
+  id        String   @id @default(cuid())
+  kind      String // fact | session_note | feedback
+  content   String
+  tags      String? // comma-separated, e.g. "proposal:abc123,categorize"
+  source    String // discord | app | claude_session | seed
+  archived  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// Registry of hub-managed Discord agents (advisor + ephemeral reviewers).
+model HubAgent {
+  id           String           @id @default(cuid())
+  name         String           @unique
+  kind         String // advisor | monthly_reviewer | checks_runner
+  channelId    String
+  webhookId    String?
+  webhookToken String?
+  sessionId    String? // Claude CLI session uuid
+  tmuxSession  String?
+  adapterPort  Int?
+  status       String           @default("offline") // offline | starting | ready | running | dead
+  messages     ChannelMessage[]
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+}
+
+// Audit log of everything flowing through the Discord control plane.
+model ChannelMessage {
+  id         String    @id @default(cuid())
+  discordId  String?   @unique
+  channelId  String
+  direction  String // inbound | outbound
+  authorName String
+  agent      HubAgent? @relation(fields: [agentId], references: [id])
+  agentId    String?
+  content    String
+  createdAt  DateTime  @default(now())
+
+  @@index([channelId, createdAt])
+}

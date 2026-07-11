@@ -2,6 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
+import {
+  archiveProposalDecision,
+  rememberProposalDecision,
+} from "@walletup/memory";
 
 async function setDecision(
   id: string,
@@ -23,6 +27,7 @@ async function setDecision(
     where: { id },
     data: { status, reviewNote: note, reviewedAt: new Date() },
   });
+  await rememberProposalDecision(proposal, status, note, "app");
   revalidatePath("/review");
 }
 
@@ -49,5 +54,6 @@ export async function undoDecision(formData: FormData) {
     where: { id },
     data: { status: "proposal", reviewNote: null, reviewedAt: null },
   });
+  await archiveProposalDecision(id);
   revalidatePath("/review");
 }

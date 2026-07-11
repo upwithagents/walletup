@@ -14,9 +14,12 @@ importers:
 
   apps/web:
     dependencies:
-      '@prisma/client':
-        specifier: ^6.19.3
-        version: 6.19.3(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)
+      '@walletup/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      '@walletup/memory':
+        specifier: workspace:*
+        version: link:../../packages/memory
       next:
         specifier: 16.2.10
         version: 16.2.10(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -45,18 +48,31 @@ importers:
       eslint-config-next:
         specifier: 16.2.10
         version: 16.2.10(@typescript-eslint/parser@8.63.0(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
-      prisma:
-        specifier: ^6.19.3
-        version: 6.19.3(typescript@5.9.3)
       tailwindcss:
         specifier: ^4
         version: 4.3.2
-      tsx:
-        specifier: ^4.23.0
-        version: 4.23.0
       typescript:
         specifier: ^5
         version: 5.9.3
+
+  packages/db:
+    dependencies:
+      '@prisma/client':
+        specifier: ^6.19.3
+        version: 6.19.3(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)
+    devDependencies:
+      prisma:
+        specifier: ^6.19.3
+        version: 6.19.3(typescript@5.9.3)
+      tsx:
+        specifier: ^4.23.0
+        version: 4.23.0
+
+  packages/memory:
+    dependencies:
+      '@walletup/db':
+        specifier: workspace:*
+        version: link:../db
 
 packages:
 
