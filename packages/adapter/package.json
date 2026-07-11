@@ -1,0 +1,17 @@
+{
+  "name": "@walletup/adapter",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.ts",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "@walletup/db": "workspace:*",
+    "@walletup/memory": "workspace:*",
+    "zod": "^3.25.11"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.0",
+    "typescript": "^5"
+  },
+  "type": "module"
+}

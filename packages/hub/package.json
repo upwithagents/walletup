@@ -1,0 +1,21 @@
+{
+  "name": "@walletup/hub",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@walletup/db": "workspace:*",
+    "@walletup/memory": "workspace:*",
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "tsx": "^4.23.0",
+    "typescript": "^5"
+  },
+  "type": "module"
+}

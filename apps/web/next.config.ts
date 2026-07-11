@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  transpilePackages: ["@walletup/db", "@walletup/memory"],
 };
 
 export default nextConfig;

@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const prisma = new PrismaClient();
 
@@ -22,7 +23,7 @@ interface SeedFile {
 }
 
 async function main() {
-  const dir = join(__dirname, "seed-data");
+  const dir = join(dirname(fileURLToPath(import.meta.url)), "seed-data");
   const files = readdirSync(dir).filter(
     (f) => f.endsWith(".json") && f !== "example.json",
   );

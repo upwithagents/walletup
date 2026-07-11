@@ -1,4 +1,4 @@
-import type { Proposal } from "@prisma/client";
+import type { Proposal } from "@walletup/db";
 import { prisma } from "@/lib/db";
 import { decideProposal, undoDecision } from "./actions";
 
