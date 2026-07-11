@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// One agent pass that produced proposals (categorization sweep, checks run, …)
+model AgentRun {
+  id        String     @id @default(cuid())
+  runDate   DateTime
+  type      String // categorization | checks | evaluation
+  summary   String?
+  proposals Proposal[]
+  createdAt DateTime   @default(now())
+}
+
+// A single agent suggestion awaiting human review.
+// status: proposal -> approved | rejected -> applied
+model Proposal {
+  id             String        @id @default(cuid())
+  run            AgentRun      @relation(fields: [runId], references: [id])
+  runId          String
+  section        String // grouping shown in the queue (e.g. "High confidence")
+  kind           String // categorize | delete_duplicate | fix_category | remove_label | open_question
+  walletRecordId String? // record id in the finance provider (null for batch-level questions)
+  title          String // merchant / short description + amount
+  detail         String // date • account • context
+  proposedAction String // human-readable proposed change
+  actionData     String? // JSON payload for the apply step (category ids, label ids, …)
+  evidence       String
+  confidence     String // high | medium | low | needs_input
+  status         String        @default("proposal")
+  reviewNote     String?
+  reviewedAt     DateTime?
+  appliedAt      DateTime?
+  learningNote   LearningNote?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+// What the agent learned from the human's decision on a proposal —
+// fed back into future categorization prompts.
+model LearningNote {
+  id         String   @id @default(cuid())
+  proposal   Proposal @relation(fields: [proposalId], references: [id])
+  proposalId String   @unique
+  lesson     String
+  createdAt  DateTime @default(now())
+}

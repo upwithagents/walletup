@@ -64,6 +64,15 @@ queue (app MVP).
 - Roadmap + implementation plans are maintained outside this repo (they can
   reference personal financial context) — `CLAUDE.local.md` says where.
 
+## Running the app
+
+`apps/web` — Next.js 16 + Prisma/SQLite (pnpm monorepo). From the repo root:
+`pnpm install`, copy `apps/web/.env.example` to `apps/web/.env`, then
+`pnpm db:migrate && pnpm db:seed && pnpm dev`. Review queue lives at
+`/review`. Browser smoke test: `node apps/web/e2e/review-smoke.mjs` with the
+dev server up. Agent-run seed files go in `apps/web/prisma/seed-data/`
+(gitignored; see `example.json`).
+
 ## Conventions
 
 - Branches: `up/<max-3-word-kebab>` (project convention — not the owner's
