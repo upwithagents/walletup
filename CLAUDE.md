@@ -29,10 +29,10 @@ possibly multi-provider one day).
 ## Architecture (end picture)
 
 1. **Wallet** — source of truth for transactions/budgets (MCP + REST).
-2. **WalletUp app** (plan 05) — localhost Next.js+Prisma UI for what Wallet
+2. **WalletUp app** — localhost Next.js+Prisma UI for what Wallet
    can't do: agent-proposal review queue, month evaluation, checks. PWA →
    mobile later.
-3. **Discord "WalletUp" server** (plan 04, created) — finance chat +
+3. **Discord "WalletUp" server** (created) — finance chat +
    agent-posted visuals.
 4. **Google Sheet** "Finances - AI powered" — legacy manual layer, now
    secondary visualization/export; may retire eventually. No direct MCP
@@ -53,7 +53,7 @@ possibly multi-provider one day).
 Agent findings that need user sign-off go to
 `agent_reviews/YYYY-MM-DD-<topic>.md` (gitignored): per-item status
 `proposal → approved/rejected → applied`. The WalletUp app will absorb this
-queue (plan 05 MVP).
+queue (app MVP).
 
 ## Key docs (read before non-trivial work)
 
@@ -61,7 +61,8 @@ queue (plan 05 MVP).
   key entity IDs.
 - `docs/finance-system.md` — accounts, virtual accounts, Set-Aside system,
   labels, budgets, monthly workflows.
-- `claude_plans/` — roadmap + plans; check its `CLAUDE.md` first.
+- Roadmap + implementation plans are maintained outside this repo (they can
+  reference personal financial context) — `CLAUDE.local.md` says where.
 
 ## Conventions
 
@@ -69,8 +70,8 @@ queue (plan 05 MVP).
   personal `lm/` prefix, since this repo may have other contributors one
   day). Large implementation work goes through branches even though this
   repo allows direct commits to `main`.
-- App stack: Next.js + TypeScript + Prisma + SQLite (see plan 05). Python
-  acceptable for standalone agent CLIs.
+- App stack: Next.js + TypeScript + Prisma + SQLite. Python acceptable for
+  standalone agent CLIs.
 
 ## Local/private context
 

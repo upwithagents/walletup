@@ -17,8 +17,5 @@ CLAUDE.local.md
 # Claude workspace dirs that stay local
 claude_tasks/
 claude_procedures/
+claude_plans/
 .claude/memory/
-
-# Plans ARE tracked in this repo (overrides the user-global ignore)
-!claude_plans/
-!claude_plans/**
