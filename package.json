@@ -5,7 +5,9 @@
     "dev": "pnpm --filter web dev",
     "build": "pnpm --filter web build",
     "db:migrate": "pnpm --filter @walletup/db db:migrate",
-    "db:seed": "pnpm --filter @walletup/db db:seed"
+    "db:seed": "pnpm --filter @walletup/db db:seed",
+    "hub": "pnpm --filter @walletup/hub start",
+    "typecheck": "pnpm --filter @walletup/hub typecheck"
   },
   "packageManager": "pnpm@10.30.1",
   "devDependencies": {
