@@ -20,6 +20,9 @@ importers:
       '@walletup/memory':
         specifier: workspace:*
         version: link:../../packages/memory
+      '@walletup/provider-wallet':
+        specifier: workspace:*
+        version: link:../../packages/provider-wallet
       next:
         specifier: 16.2.10
         version: 16.2.10(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -42,6 +45,9 @@ importers:
       '@types/react-dom':
         specifier: ^19
         version: 19.2.3(@types/react@19.2.17)
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.6.1
       eslint:
         specifier: ^9
         version: 9.39.5(jiti@2.7.0)
@@ -120,6 +126,22 @@ importers:
       '@walletup/db':
         specifier: workspace:*
         version: link:../db
+
+  packages/provider-wallet:
+    dependencies:
+      '@modelcontextprotocol/sdk':
+        specifier: ^1.12.1
+        version: 1.29.0(zod@3.25.76)
+    devDependencies:
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.6.1
+      tsx:
+        specifier: ^4.23.0
+        version: 4.23.0
+      typescript:
+        specifier: ^5
+        version: 5.9.3
 
 packages:
 

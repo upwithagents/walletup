@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Mono, Public_Sans } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -34,7 +35,17 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${publicSans.variable} ${plexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <nav className="mx-auto flex w-full max-w-3xl gap-5 px-4 pt-5 font-mono text-[11px] tracking-[0.18em] uppercase">
+          <Link href="/review" className="text-ink-soft hover:text-ink">
+            Review desk
+          </Link>
+          <Link href="/accounts" className="text-ink-soft hover:text-ink">
+            Accounts
+          </Link>
+        </nav>
+        {children}
+      </body>
     </html>
   );
 }

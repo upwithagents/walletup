@@ -1,6 +1,4 @@
 import { spawnSync } from "node:child_process";
-import { readFileSync } from "node:fs";
-import { homedir } from "node:os";
 import { join } from "node:path";
 import { prisma, type HubAgent } from "@walletup/db";
 import { env, HUB_URL, REPO_ROOT } from "./env";
@@ -26,18 +24,18 @@ export function isTmuxSessionAlive(session: string): boolean {
 }
 
 /**
- * The user-level wallet MCP (remote server) is passed through to the agent
- * so the advisor can read finance data. Best-effort — skipped if not found.
+ * The wallet MCP (remote server) is passed to the agent with bearer-token
+ * auth so the advisor can read finance data. Skipped if env is missing.
  */
 function walletMcpEntry(): Record<string, unknown> | null {
-  try {
-    const cfg = JSON.parse(readFileSync(join(homedir(), ".claude.json"), "utf8"));
-    const wallet = cfg?.mcpServers?.wallet;
-    if (wallet?.url) return wallet;
-  } catch {
-    // fall through
-  }
-  return null;
+  const url = process.env.WALLET_MCP_URL;
+  const token = process.env.MCP_TOKEN;
+  if (!url || !token) return null;
+  return {
+    type: "http",
+    url,
+    headers: { Authorization: `Bearer ${token}` },
+  };
 }
 
 function buildMcpConfig(agent: HubAgent): string {
