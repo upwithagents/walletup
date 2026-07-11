@@ -101,6 +101,8 @@ export async function spawnAgent(agent: HubAgent): Promise<void> {
     "--name", agent.name,
     "--dangerously-skip-permissions",
     "--dangerously-load-development-channels", "server:hub-adapter",
+    // Only the servers we pass — never the user's personal/employer MCPs
+    "--strict-mcp-config",
     "--mcp-config", buildMcpConfig(agent),
   ];
 
