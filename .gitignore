@@ -13,6 +13,15 @@ Finances - AI powered GSheet/Snapshot_*/
 agent_reviews/
 reports/
 CLAUDE.local.md
+apps/web/prisma/seed-data/*.json
+!apps/web/prisma/seed-data/example.json
+*.db
+*.db-journal
+
+# Node
+node_modules/
+.next/
+next-env.d.ts
 
 # Claude workspace dirs that stay local
 claude_tasks/

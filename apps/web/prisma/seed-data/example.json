@@ -1,0 +1,32 @@
+{
+  "_comment": "Sanitized example of a seed-data file. Real files in this directory contain transaction details (payees, amounts) and are gitignored — only this example is tracked. Drop agent-run exports here as <date>-<topic>.json and run `pnpm db:seed`.",
+  "run": {
+    "runDate": "2026-01-01",
+    "type": "categorization",
+    "summary": "Example agent run."
+  },
+  "proposals": [
+    {
+      "section": "High confidence",
+      "kind": "categorize",
+      "walletRecordId": "00000000-0000-0000-0000-000000000000",
+      "title": "Example Merchant — −123.45",
+      "detail": "2026-01-01 • Example Account",
+      "proposedAction": "Categorize as Example Category",
+      "actionData": "{\"categoryId\":\"00000000-0000-0000-0000-000000000000\",\"categoryName\":\"Example Category\"}",
+      "evidence": "Why the agent believes this is right.",
+      "confidence": "high"
+    },
+    {
+      "section": "Needs your decision",
+      "kind": "open_question",
+      "walletRecordId": null,
+      "title": "A question the agent could not resolve",
+      "detail": "Context for the question",
+      "proposedAction": "What the reviewer should decide — answer in the note.",
+      "actionData": null,
+      "evidence": "Why the agent could not decide.",
+      "confidence": "needs_input"
+    }
+  ]
+}
