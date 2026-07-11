@@ -31,6 +31,7 @@ model Proposal {
   proposedAction String // human-readable proposed change
   actionData     String? // JSON payload for the apply step (category ids, label ids, …)
   evidence       String
+  recordData     String? // JSON snapshot of the provider record for display (amount, account, labels, colors)
   confidence     String // high | medium | low | needs_input
   status         String        @default("proposal")
   reviewNote     String?
