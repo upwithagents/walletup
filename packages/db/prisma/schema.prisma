@@ -142,3 +142,88 @@ model EvaluationRow {
   currency     String          @default("CZK")
   progress     Float?
 }
+
+// ---- Sheet-replacement entities (the app is the system of record) ----
+
+model Todo {
+  id        String   @id @default(cuid())
+  title     String
+  status    String   @default("todo") // todo | doing | done
+  notes     String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Presentations tab: dated tips/summaries for the family team.
+model Tip {
+  id         String   @id @default(cuid())
+  monthLabel String // "June 2026"
+  text       String
+  status     String   @default("open") // open | done
+  createdAt  DateTime @default(now())
+}
+
+// Categories/Labels tab: how sheet concepts map to provider objects.
+model CategoryMapping {
+  id       String  @id @default(cuid())
+  emoji    String?
+  name     String
+  type     String // Income | Expense | Transfer
+  inWallet String
+}
+
+// Checks + Distributions tabs: numbered operating procedures.
+model Procedure {
+  id          String                @id @default(cuid())
+  kind        String // check | distribution
+  num         Int
+  name        String
+  description String?
+  whenToRun   String?
+  notes       String?
+  steps       ProcedureStep[]
+  completions ProcedureCompletion[]
+  createdAt   DateTime              @default(now())
+  updatedAt   DateTime              @updatedAt
+}
+
+model ProcedureStep {
+  id          String    @id @default(cuid())
+  procedure   Procedure @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  procedureId String
+  order       Int
+  text        String
+}
+
+model ProcedureCompletion {
+  id          String    @id @default(cuid())
+  procedure   Procedure @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  procedureId String
+  label       String // "May 2026 (end)"
+  completedAt DateTime  @default(now())
+}
+
+// Set-Aside tab: monthly reservations toward annual payments/goals.
+model SetAsideItem {
+  id            String             @id @default(cuid())
+  num           Int
+  name          String
+  description   String?
+  dueLabel      String? // "last week of MAY"
+  windowLabel   String? // "1st-3rd of Month"
+  monthlyAmount Float?
+  notes         String?
+  progress      SetAsideProgress[]
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+}
+
+model SetAsideProgress {
+  id        String       @id @default(cuid())
+  item      SetAsideItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId    String
+  yearLabel String // "2026"
+  saved     Float
+  target    Float
+}

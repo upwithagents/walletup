@@ -36,19 +36,23 @@ export default function RootLayout({
       className={`${fraunces.variable} ${publicSans.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <nav className="mx-auto flex w-full max-w-3xl gap-5 px-4 pt-5 font-mono text-[11px] tracking-[0.18em] uppercase">
-          <Link href="/review" className="text-ink-soft hover:text-ink">
-            Review desk
-          </Link>
-          <Link href="/accounts" className="text-ink-soft hover:text-ink">
-            Accounts
-          </Link>
-          <Link href="/checks" className="text-ink-soft hover:text-ink">
-            Checks
-          </Link>
-          <Link href="/evaluation" className="text-ink-soft hover:text-ink">
-            Evaluation
-          </Link>
+        <nav className="mx-auto flex w-full max-w-4xl flex-wrap gap-x-5 gap-y-1 px-4 pt-5 font-mono text-[11px] tracking-[0.18em] uppercase">
+          {[
+            ["/", "Dashboard"],
+            ["/review", "Review"],
+            ["/accounts", "Accounts"],
+            ["/checks", "Checks"],
+            ["/evaluation", "Evaluation"],
+            ["/set-aside", "Set-Aside"],
+            ["/procedures", "Procedures"],
+            ["/todos", "Todo"],
+            ["/tips", "Tips"],
+            ["/mappings", "Mappings"],
+          ].map(([href, label]) => (
+            <Link key={href} href={href} className="text-ink-soft hover:text-ink">
+              {label}
+            </Link>
+          ))}
         </nav>
         {children}
       </body>
