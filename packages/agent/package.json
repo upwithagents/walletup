@@ -8,7 +8,9 @@
     "categorize": "tsx src/categorize-cli.ts",
     "test": "node --experimental-strip-types --test src/*.test.ts",
     "checks": "tsx src/checks-cli.ts",
-    "evaluate": "tsx src/evaluate-cli.ts"
+    "evaluate": "tsx src/evaluate-cli.ts",
+    "apply": "tsx src/apply-cli.ts",
+    "daily": "tsx src/daily-cli.ts"
   },
   "dependencies": {
     "@walletup/db": "workspace:*",

@@ -9,6 +9,7 @@ import { startApi } from "./api";
 import { DebounceBuffer, type BufferedMessage } from "./debounce";
 import { createClient, isEcho, logInbound } from "./discord";
 import { env } from "./env";
+import { startScheduler } from "./scheduler";
 import { spawnAgent } from "./spawn";
 
 const ADVISOR_NAME = "Advisor";
@@ -129,6 +130,7 @@ async function main() {
 
   client.once(Events.ClientReady, async () => {
     console.log(`[hub] Discord connected as ${client.user?.tag}`);
+    startScheduler();
     await spawnAgent(advisor);
   });
 

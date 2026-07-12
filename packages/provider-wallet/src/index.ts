@@ -6,8 +6,8 @@
  * the ONLY module that knows Wallet specifics; keep other packages
  * provider-agnostic.
  *
- * READ-ONLY by design: no create/patch/delete wrappers exist here on
- * purpose. Mutations flow through the review-queue apply step.
+ * WalletProvider is READ-ONLY. Mutations live exclusively in the separate
+ * WalletWriter class below, used only by the review-queue apply step.
  */
 
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
@@ -141,6 +141,41 @@ export class WalletProvider {
       recordDate: [`gte.${sinceIso}`],
       limit: 400,
       sortBy: ["-recordDate"],
+    });
+  }
+}
+
+/**
+ * Write access — deliberately a separate class so nothing acquires
+ * mutation ability by accident. Used ONLY by the apply step, which
+ * executes user-approved proposals. Every method maps 1:1 to a provider
+ * write tool and requires the corresponding granted scope.
+ */
+export class WalletWriter extends WalletProvider {
+  private write<T>(tool: string, args: Record<string, unknown>): Promise<T> {
+    // @ts-expect-error -- intentional access to the private transport
+    return this.call(tool, args) as Promise<T>;
+  }
+
+  /** Update a record's category (records.update scope). */
+  patchRecordCategory(recordId: string, categoryId: string) {
+    return this.write("patch_records", { id: recordId, categoryId });
+  }
+
+  /** Remove a label from a record (records.update scope). */
+  async removeRecordLabel(recordId: string, labelId: string) {
+    const { records } = await this.getRecords({ id: recordId, limit: 1 });
+    const rec = (records as Array<{ labels: Array<{ id: string }> }>)[0];
+    if (!rec) throw new Error(`record ${recordId} not found`);
+    const labelIds = rec.labels.map((l) => l.id).filter((id) => id !== labelId);
+    return this.write("patch_records", { id: recordId, labelIds });
+  }
+
+  /** Delete records (records.delete scope). */
+  deleteRecords(recordIds: string[]) {
+    return this.write("delete_documents", {
+      resource: "records",
+      id: recordIds.join(","),
     });
   }
 }

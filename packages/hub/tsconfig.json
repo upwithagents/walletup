@@ -12,13 +12,15 @@
     "strict": true,
     "skipLibCheck": true,
     "noEmit": true,
-    "allowImportingTsExtensions": false,
+    "allowImportingTsExtensions": true,
     "esModuleInterop": true
   },
   "include": [
     "src/**/*.ts",
     "../adapter/src/**/*.ts",
     "../memory/src/**/*.ts",
-    "../db/src/**/*.ts"
+    "../db/src/**/*.ts",
+    "../agent/src/**/*.ts",
+    "../provider-wallet/src/**/*.ts"
   ]
 }
