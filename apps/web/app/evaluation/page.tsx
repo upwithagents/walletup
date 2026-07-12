@@ -47,7 +47,10 @@ export default async function EvaluationPage(props: {
         </h1>
         <p className="mt-3 max-w-prose text-sm text-ink-soft">
           The Budgets tab, computed from live provider data. Budget points are
-          provisional until the sheet formula is confirmed.
+          provisional until the sheet formula is confirmed.{" "}
+          <a href="/evaluation/history" className="underline hover:text-ink">
+            Month-by-month grid →
+          </a>
         </p>
         {evaluations.length > 0 ? (
           <p className="mt-3 font-mono text-xs">
