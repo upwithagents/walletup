@@ -6,7 +6,8 @@
   "main": "src/index.ts",
   "scripts": {
     "categorize": "tsx src/categorize-cli.ts",
-    "test": "node --experimental-strip-types --test src/*.test.ts"
+    "test": "node --experimental-strip-types --test src/*.test.ts",
+    "checks": "tsx src/checks-cli.ts"
   },
   "dependencies": {
     "@walletup/db": "workspace:*",

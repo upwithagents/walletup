@@ -96,3 +96,21 @@ model ChannelMessage {
 
   @@index([channelId, createdAt])
 }
+
+// One execution of the automated finance health checks (plan 03).
+model CheckRun {
+  id      String        @id @default(cuid())
+  runDate DateTime      @default(now())
+  results CheckResult[]
+}
+
+model CheckResult {
+  id       String   @id @default(cuid())
+  run      CheckRun @relation(fields: [runId], references: [id])
+  runId    String
+  checkId  String // stable slug, e.g. "cc-manual-zero"
+  name     String
+  status   String // pass | warn | fail
+  evidence String
+  remedy   String?
+}

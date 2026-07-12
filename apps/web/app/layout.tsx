@@ -43,6 +43,9 @@ export default function RootLayout({
           <Link href="/accounts" className="text-ink-soft hover:text-ink">
             Accounts
           </Link>
+          <Link href="/checks" className="text-ink-soft hover:text-ink">
+            Checks
+          </Link>
         </nav>
         {children}
       </body>
