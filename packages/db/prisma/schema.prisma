@@ -114,3 +114,31 @@ model CheckResult {
   evidence String
   remedy   String?
 }
+
+// A computed month evaluation (plan 02) — aim vs actual per budget plus
+// month totals; the sheet's Budgets tab as data.
+model MonthEvaluation {
+  id           String          @id @default(cuid())
+  month        String // "2026-06"
+  computedAt   DateTime        @default(now())
+  incomeTotal  Float
+  expenseTotal Float
+  balance      Float
+  budgetPoints Int?
+  pointsMethod String? // "provisional-overspend-v1" until the sheet formula is confirmed
+  rows         EvaluationRow[]
+
+  @@unique([month])
+}
+
+model EvaluationRow {
+  id           String          @id @default(cuid())
+  evaluation   MonthEvaluation @relation(fields: [evaluationId], references: [id], onDelete: Cascade)
+  evaluationId String
+  name         String
+  kind         String // budget | derived
+  aim          Float?
+  actual       Float
+  currency     String          @default("CZK")
+  progress     Float?
+}
