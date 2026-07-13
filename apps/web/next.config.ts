@@ -8,6 +8,7 @@ config({ path: join(__dirname, "..", "..", ".env") });
 
 const nextConfig: NextConfig = {
   transpilePackages: ["@walletup/db", "@walletup/memory", "@walletup/provider-wallet"],
+  basePath: "/walletup",
 };
 
 export default nextConfig;
