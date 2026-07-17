@@ -1,6 +1,8 @@
 @import "tailwindcss";
-/* Shared portal chrome (PortalHeader) theme; its stylesheet already imports tailwindcss. */
-@import "@upwithagents/ui/styles.css";
+/* PortalHeader's theme, scoped to [data-portal-chrome] so it can't collide
+   with this app's own tokens of the same name; its stylesheet already
+   imports tailwindcss. */
+@import "@upwithagents/ui/header-scope.css";
 /* Tailwind ignores node_modules by default; scan the UI package's classes. */
 @source "../node_modules/@upwithagents/ui/dist";
 
