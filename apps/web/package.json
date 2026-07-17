@@ -9,22 +9,23 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "next": "16.2.10",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "@upwithagents/ui": "file:../../../updesignsystem",
     "@walletup/db": "workspace:*",
     "@walletup/memory": "workspace:*",
-    "@walletup/provider-wallet": "workspace:*"
+    "@walletup/provider-wallet": "workspace:*",
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^16.4.5",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "tailwindcss": "^4",
-    "typescript": "^5",
-    "dotenv": "^16.4.5"
+    "typescript": "^5"
   }
 }

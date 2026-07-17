@@ -1,4 +1,8 @@
 @import "tailwindcss";
+/* Shared portal chrome (PortalHeader) theme; its stylesheet already imports tailwindcss. */
+@import "@upwithagents/ui/styles.css";
+/* Tailwind ignores node_modules by default; scan the UI package's classes. */
+@source "../node_modules/@upwithagents/ui/dist";
 
 @theme {
   --color-paper: #edf1ea;
