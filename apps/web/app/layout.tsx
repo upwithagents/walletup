@@ -1,23 +1,13 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Mono, Public_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import Link from "next/link";
 import { PortalChrome } from "./components/PortalChrome";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  axes: ["opsz"],
-});
-
-const publicSans = Public_Sans({
-  variable: "--font-public-sans",
-  subsets: ["latin"],
-});
-
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
-  weight: ["400", "500"],
+// Shared @upwithagents/ui design-system font — its theme.css names --font-sans
+// "Inter" but doesn't ship the webfont itself, so this actually loads it.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -34,7 +24,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${publicSans.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <PortalChrome />

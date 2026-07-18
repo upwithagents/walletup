@@ -246,7 +246,7 @@ export default async function ReviewPage() {
         <p className="font-mono text-[11px] tracking-[0.2em] text-ink-soft uppercase">
           WalletUp
         </p>
-        <h1 className="font-display mt-1 text-4xl font-semibold tracking-tight">
+        <h1 className="mt-1 text-4xl font-semibold tracking-tight">
           Review desk
         </h1>
         <p className="mt-3 max-w-prose text-sm text-ink-soft">
@@ -279,7 +279,7 @@ export default async function ReviewPage() {
         return (
           <section key={run.id} className="mt-8">
             <div className="flex items-baseline justify-between gap-4">
-              <h2 className="font-display text-xl font-medium">{run.type} run</h2>
+              <h2 className="text-xl font-medium">{run.type} run</h2>
               <p className="font-mono text-xs text-ink-soft">
                 {run.runDate.toISOString().slice(0, 10)}
               </p>

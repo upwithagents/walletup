@@ -1,12 +1,14 @@
 /** Tiny shared primitives for the plain CRUD pages (visuals outsourced). */
 
+import { Button, Input } from "@upwithagents/ui";
+
 export function PageHeader({ title, blurb }: { title: string; blurb: string }) {
   return (
     <header>
       <p className="font-mono text-[11px] tracking-[0.2em] text-ink-soft uppercase">
         WalletUp
       </p>
-      <h1 className="font-display mt-1 text-4xl font-semibold tracking-tight">
+      <h1 className="mt-1 text-4xl font-semibold tracking-tight">
         {title}
       </h1>
       <p className="mt-3 max-w-prose text-sm text-ink-soft">{blurb}</p>
@@ -21,12 +23,15 @@ export function Field(props: {
   wide?: boolean;
 }) {
   return (
-    <input
-      name={props.name}
-      defaultValue={props.defaultValue ?? ""}
-      placeholder={props.placeholder ?? props.name}
-      className={`rounded border border-rule bg-card px-2 py-1 text-sm ${props.wide ? "w-full" : "w-32"}`}
-    />
+    // Wrapper controls width; Input's own `w-full` fills it — avoids
+    // relying on Tailwind class-order to override a width utility.
+    <div className={props.wide ? "w-full" : "w-32"}>
+      <Input
+        name={props.name}
+        defaultValue={props.defaultValue ?? ""}
+        placeholder={props.placeholder ?? props.name}
+      />
+    </div>
   );
 }
 
@@ -49,12 +54,9 @@ export function Area(props: {
 
 export function SaveButton({ label = "Save" }: { label?: string }) {
   return (
-    <button
-      type="submit"
-      className="rounded bg-approve px-3 py-1 text-sm font-medium text-card hover:bg-approve/90"
-    >
+    <Button type="submit" size="sm">
       {label}
-    </button>
+    </Button>
   );
 }
 

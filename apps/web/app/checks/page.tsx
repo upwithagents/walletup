@@ -22,7 +22,7 @@ export default async function ChecksPage() {
         <p className="font-mono text-[11px] tracking-[0.2em] text-ink-soft uppercase">
           WalletUp
         </p>
-        <h1 className="font-display mt-1 text-4xl font-semibold tracking-tight">
+        <h1 className="mt-1 text-4xl font-semibold tracking-tight">
           Checks
         </h1>
         <p className="mt-3 max-w-prose text-sm text-ink-soft">

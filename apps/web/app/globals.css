@@ -27,9 +27,11 @@
   --color-attention: #96691c;
   --color-attention-soft: #f2ead7;
 
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  /* Shared design-system font (Inter), matching @upwithagents/ui's own
+     --font-sans token instead of walletup's former Fraunces/Public Sans
+     pairing. --font-mono is intentionally left undeclared so Tailwind's
+     built-in monospace stack applies (no custom mono webfont either). */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
