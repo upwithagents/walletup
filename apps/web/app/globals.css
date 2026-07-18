@@ -1,18 +1,25 @@
 @import "tailwindcss";
-/* PortalHeader's theme, scoped to [data-portal-chrome] so it can't collide
-   with this app's own tokens of the same name; its stylesheet already
-   imports tailwindcss. */
-@import "@upwithagents/ui/header-scope.css";
+/* Full shared theme (paper/ink + terracotta accent) — walletup adopts it
+   app-wide, not just for the header. */
+@import "@upwithagents/ui/styles.css";
 /* Tailwind ignores node_modules by default; scan the UI package's classes. */
 @source "../node_modules/@upwithagents/ui/dist";
 
-@theme {
-  --color-paper: #edf1ea;
-  --color-card: #f8faf5;
-  --color-card-done: #eff3ec;
-  --color-ink: #182620;
-  --color-ink-soft: #51625a;
-  --color-rule: #c7d3c3;
+@theme inline {
+  /* "inline" (not plain @theme) because these values reference other CSS
+     custom properties — plain @theme wants build-time-static values and
+     won't resolve var() correctly for Tailwind's utility generation.
+     nav.tsx uses `text-ink-soft`, so --color-ink-soft in particular must
+     produce a working utility class.
+     --color-paper and --color-ink are defined by the shared styles.css
+     import above and intentionally not redeclared here. */
+  --color-card: var(--color-paper-muted);
+  --color-card-done: color-mix(in srgb, var(--color-paper-muted) 60%, var(--color-paper));
+  --color-ink-soft: var(--color-ink-muted);
+  --color-rule: var(--color-border);
+
+  /* Preserved as-is per spec: functionally load-bearing review-desk colors,
+     not decorative branding. */
   --color-approve: #1e6b4f;
   --color-approve-soft: #e2ede7;
   --color-reject: #a63b2a;
