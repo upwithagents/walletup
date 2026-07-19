@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, Inter, IBM_Plex_Mono } from "next/font/google";
 import Link from "next/link";
+import { ThemeScript } from "@upwithagents/ui";
 import { PortalChrome } from "./components/PortalChrome";
 import "./globals.css";
 
@@ -39,6 +40,9 @@ export default function RootLayout({
       lang="en"
       className={`${archivo.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
     >
+      <head>
+        <ThemeScript />
+      </head>
       <body className="min-h-full flex flex-col">
         <PortalChrome />
         <nav className="mx-auto flex w-full max-w-4xl flex-wrap gap-x-5 gap-y-1 px-4 pt-5 font-mono text-[11px] tracking-[0.18em] uppercase">
