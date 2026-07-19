@@ -11,12 +11,15 @@
      won't resolve var() correctly for Tailwind's utility generation.
      nav.tsx uses `text-ink-soft`, so --color-ink-soft in particular must
      produce a working utility class.
-     --color-paper and --color-ink are defined by the shared styles.css
-     import above and intentionally not redeclared here. */
-  --color-card: var(--color-paper-muted);
-  --color-card-done: color-mix(in srgb, var(--color-paper-muted) 60%, var(--color-paper));
-  --color-ink-soft: var(--color-ink-muted);
-  --color-rule: var(--color-border);
+     Aliased off the *semantic* tokens (--background/--foreground/--muted/
+     --muted-foreground/--border), not the raw --color-paper/--color-ink
+     palette values — the raw ones are only ever redefined at :root and
+     never inside .dark, so anything built from them stays light-mode-only
+     regardless of the shared ThemeToggle/dark class. */
+  --color-card: var(--muted);
+  --color-card-done: color-mix(in srgb, var(--muted) 60%, var(--background));
+  --color-ink-soft: var(--muted-foreground);
+  --color-rule: var(--border);
 
   /* Preserved as-is per spec: functionally load-bearing review-desk colors,
      not decorative branding. */
@@ -29,8 +32,8 @@
 }
 
 body {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: var(--font-sans);
   /* Ledger ruling: faint horizontal lines across the whole desk */
   background-image: repeating-linear-gradient(
