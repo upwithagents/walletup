@@ -35,14 +35,6 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  /* Ledger ruling: faint horizontal lines across the whole desk */
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 31px,
-    color-mix(in srgb, var(--color-rule) 40%, transparent) 31px,
-    color-mix(in srgb, var(--color-rule) 40%, transparent) 32px
-  );
 }
 
 ::selection {
