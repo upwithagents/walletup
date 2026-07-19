@@ -26,12 +26,6 @@
   --color-reject-soft: #f2e4e0;
   --color-attention: #96691c;
   --color-attention-soft: #f2ead7;
-
-  /* Shared design-system font (Inter), matching @upwithagents/ui's own
-     --font-sans token instead of walletup's former Fraunces/Public Sans
-     pairing. --font-mono is intentionally left undeclared so Tailwind's
-     built-in monospace stack applies (no custom mono webfont either). */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
