@@ -39,6 +39,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${archivo.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <ThemeScript />
