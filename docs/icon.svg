@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="WalletUp">
+  <defs>
+    <clipPath id="sq"><rect width="100" height="100" rx="22"/></clipPath>
+    <linearGradient id="cA" x1="56" y1="0" x2="100" y2="44" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFB020"/><stop offset="1" stop-color="#EB4E10"/></linearGradient>
+    <linearGradient id="cB" x1="0" y1="56" x2="44" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#EB4E10"/><stop offset="1" stop-color="#B8380A"/></linearGradient>
+  </defs>
+  <g clip-path="url(#sq)">
+    <rect width="100" height="100" fill="#14100c"/>
+    <path d="M56,0 L100,0 L100,44 Z" fill="url(#cA)"/>
+    <path d="M0,56 L0,100 L44,100 Z" fill="url(#cB)"/>
+    <rect x="33" y="25" width="30" height="20" rx="3" fill="#fff8f0" transform="rotate(-8 48 35)" opacity="0.85"/><path d="M27,38 h46 a8,8 0 0 1 8,8 v22 a8,8 0 0 1 -8,8 h-46 a8,8 0 0 1 -8,-8 v-22 a8,8 0 0 1 8,-8 Z" fill="#fff8f0"/><rect x="58" y="49" width="23" height="15" rx="4" fill="#14100c"/><circle cx="66" cy="56.5" r="3.2" fill="#fff8f0"/>
+  </g>
+</svg>
