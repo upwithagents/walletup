@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@upwithagents/ui": "file:../../../updesignsystem",
+    "@upwithagents/ui": "file:../../../upwithagents-ui",
     "@walletup/db": "workspace:*",
     "@walletup/memory": "workspace:*",
     "@walletup/provider-wallet": "workspace:*",
