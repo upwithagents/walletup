@@ -4,7 +4,6 @@
   "private": true,
   "main": "src/index.ts",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.12.1",
     "@walletup/db": "workspace:*",
     "@walletup/memory": "workspace:*",
     "updiscord": "file:../../../updiscord",

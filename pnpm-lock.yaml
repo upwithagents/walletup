@@ -69,9 +69,6 @@ importers:
 
   packages/adapter:
     dependencies:
-      '@modelcontextprotocol/sdk':
-        specifier: ^1.12.1
-        version: 1.29.0(zod@3.25.76)
       '@walletup/db':
         specifier: workspace:*
         version: link:../db
@@ -119,9 +116,6 @@ importers:
       '@prisma/client':
         specifier: ^6.19.3
         version: 6.19.3(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)
-      updiscord:
-        specifier: file:../../../updiscord
-        version: file:../updiscord
     devDependencies:
       prisma:
         specifier: ^6.19.3
@@ -129,6 +123,9 @@ importers:
       tsx:
         specifier: ^4.23.0
         version: 4.23.0
+      updiscord:
+        specifier: file:../../../updiscord
+        version: file:../updiscord
 
   packages/hub:
     dependencies:
