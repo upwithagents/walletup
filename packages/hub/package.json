@@ -3,14 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "tsx src/index.ts",
+    "scheduler": "tsx scripts/run-scheduler.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@walletup/db": "workspace:*",
-    "@walletup/memory": "workspace:*",
-    "discord.js": "^14.18.0",
-    "dotenv": "^16.4.5"
+    "@walletup/memory": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22",
