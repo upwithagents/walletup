@@ -45,26 +45,27 @@ export default function RootLayout({
         <ThemeScript />
       </head>
       <body className="min-h-full flex flex-col">
-        <PortalChrome />
-        <nav className="mx-auto flex w-full max-w-4xl flex-wrap gap-x-5 gap-y-1 px-4 pt-5 font-mono text-[11px] tracking-[0.18em] uppercase">
-          {[
-            ["/", "Dashboard"],
-            ["/review", "Review"],
-            ["/accounts", "Accounts"],
-            ["/checks", "Checks"],
-            ["/evaluation", "Evaluation"],
-            ["/set-aside", "Set-Aside"],
-            ["/procedures", "Procedures"],
-            ["/todos", "Todo"],
-            ["/tips", "Tips"],
-            ["/mappings", "Mappings"],
-          ].map(([href, label]) => (
-            <Link key={href} href={href} className="text-ink-soft hover:text-ink">
-              {label}
-            </Link>
-          ))}
-        </nav>
-        {children}
+        <PortalChrome>
+          <nav className="mx-auto flex w-full max-w-4xl flex-wrap gap-x-5 gap-y-1 px-4 pt-5 font-mono text-[11px] tracking-[0.18em] uppercase">
+            {[
+              ["/", "Dashboard"],
+              ["/review", "Review"],
+              ["/accounts", "Accounts"],
+              ["/checks", "Checks"],
+              ["/evaluation", "Evaluation"],
+              ["/set-aside", "Set-Aside"],
+              ["/procedures", "Procedures"],
+              ["/todos", "Todo"],
+              ["/tips", "Tips"],
+              ["/mappings", "Mappings"],
+            ].map(([href, label]) => (
+              <Link key={href} href={href} className="text-ink-soft hover:text-ink">
+                {label}
+              </Link>
+            ))}
+          </nav>
+          {children}
+        </PortalChrome>
       </body>
     </html>
   );
