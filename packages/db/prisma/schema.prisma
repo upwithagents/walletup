@@ -65,38 +65,6 @@ model Memory {
   createdAt DateTime @default(now())
 }
 
-// Registry of hub-managed Discord agents (advisor + ephemeral reviewers).
-model HubAgent {
-  id           String           @id @default(cuid())
-  name         String           @unique
-  kind         String // advisor | monthly_reviewer | checks_runner
-  channelId    String
-  webhookId    String?
-  webhookToken String?
-  sessionId    String? // Claude CLI session uuid
-  tmuxSession  String?
-  adapterPort  Int?
-  status       String           @default("offline") // offline | starting | ready | running | dead
-  messages     ChannelMessage[]
-  createdAt    DateTime         @default(now())
-  updatedAt    DateTime         @updatedAt
-}
-
-// Audit log of everything flowing through the Discord control plane.
-model ChannelMessage {
-  id         String    @id @default(cuid())
-  discordId  String?   @unique
-  channelId  String
-  direction  String // inbound | outbound
-  authorName String
-  agent      HubAgent? @relation(fields: [agentId], references: [id])
-  agentId    String?
-  content    String
-  createdAt  DateTime  @default(now())
-
-  @@index([channelId, createdAt])
-}
-
 // One execution of the automated finance health checks (plan 03).
 model CheckRun {
   id      String        @id @default(cuid())
