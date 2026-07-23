@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo, Inter, IBM_Plex_Mono } from "next/font/google";
-import Link from "next/link";
-import { ThemeScript } from "@upwithagents/ui";
+import { AppNav, ThemeScript } from "@upwithagents/ui";
 import { PortalChrome } from "./components/PortalChrome";
 import "./globals.css";
 
@@ -46,24 +45,20 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <PortalChrome>
-          <nav className="mx-auto flex w-full max-w-4xl flex-wrap gap-x-5 gap-y-1 px-4 pt-5 font-mono text-[11px] tracking-[0.18em] uppercase">
-            {[
-              ["/", "Dashboard"],
-              ["/review", "Review"],
-              ["/accounts", "Accounts"],
-              ["/checks", "Checks"],
-              ["/evaluation", "Evaluation"],
-              ["/set-aside", "Set-Aside"],
-              ["/procedures", "Procedures"],
-              ["/todos", "Todo"],
-              ["/tips", "Tips"],
-              ["/mappings", "Mappings"],
-            ].map(([href, label]) => (
-              <Link key={href} href={href} className="text-ink-soft hover:text-ink">
-                {label}
-              </Link>
-            ))}
-          </nav>
+          <AppNav
+            links={[
+              { href: "/", label: "Dashboard" },
+              { href: "/review", label: "Review" },
+              { href: "/accounts", label: "Accounts" },
+              { href: "/checks", label: "Checks" },
+              { href: "/evaluation", label: "Evaluation" },
+              { href: "/set-aside", label: "Set-Aside" },
+              { href: "/procedures", label: "Procedures" },
+              { href: "/todos", label: "Todo" },
+              { href: "/tips", label: "Tips" },
+              { href: "/mappings", label: "Mappings" },
+            ]}
+          />
           {children}
         </PortalChrome>
       </body>
